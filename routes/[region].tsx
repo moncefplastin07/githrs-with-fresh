@@ -15,7 +15,6 @@ export const handler: Handlers = {
     
     const res = await fetch(`https://dzgitrs.herokuapp.com${new URL(req.url).pathname}`)
     const resp = await ctx.render(await res.json());
-    // console.log((await res.json()).data.users.slice(4))
     return resp;
   },
 };
@@ -61,12 +60,7 @@ export default function Home({params, data}:PageProps) {
           <p className="mb-4">
             There are{" "}
             <span className="font-bold">
-              {/* <CountUp
-                start={0}
-                end={header.totalUsersNumber}
-                duration={1}
-              > 
-              </CountUp>*/}
+              {header.totalUsersNumber}
             </span>{" "}
             users on the GitHub who say they are from {header.country}
           </p>
@@ -81,7 +75,7 @@ export default function Home({params, data}:PageProps) {
               <a href={`/${header.country.toLowerCase()}`}>Commits</a>
             </li>
             <li
-              className={`hover:font-bold ${
+              className={tw`hover:font-bold ${
                 params.region == `${header.country.toLowerCase()}_public`
                   ? "bg-green-500 font-bold"
                   : "hover:bg-green-400"
@@ -92,7 +86,7 @@ export default function Home({params, data}:PageProps) {
               </a>
             </li>
             <li
-              className={`hover:font-bold ${
+              className={tw`hover:font-bold ${
                 params.region == `${header.country.toLowerCase()}_private`
                   ? "bg-green-500 font-bold"
                   : "hover:bg-green-400"
@@ -102,7 +96,7 @@ export default function Home({params, data}:PageProps) {
             </li>
           </ul>
           <div
-            className="flex flex-wrap items-center justify-around max-w-4xl sm:w-full"
+            className={tw`flex flex-wrap items-center justify-around max-w-4xl sm:w-full`}
           >
             <table>
               <thead>
@@ -110,7 +104,7 @@ export default function Home({params, data}:PageProps) {
                   <th>Score</th>
                   <th>User</th>
                   <th>Contribs</th>
-                  <th className="w-28 sm:w-24">Avatar</th>
+                  <th className={tw`w-28 sm:w-24`}>Avatar</th>
                 </tr>
               </thead>
               <tbody>
@@ -124,7 +118,7 @@ export default function Home({params, data}:PageProps) {
                       githubURL={userInfo.URL}
                       contribs={userInfo.contribs}
                       avatarURL={userInfo.avatar}
-                      className="shadow"
+                      className={tw`shadow`}
                     >
                     </UserColumn>
                   ),
