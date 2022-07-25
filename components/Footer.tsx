@@ -27,7 +27,7 @@ export default function Footer() {
         </span>
         <span>{" "}.{" "}</span>
         <span className={tw`pb-5 font-mono`}>
-          <a href="https://github.com/moncefplastin07/dzgitrs_app.vercel">
+          <a href="https://github.com/moncefplastin07/githrs">
             Github
           </a>
         </span>
