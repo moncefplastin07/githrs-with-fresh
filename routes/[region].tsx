@@ -1,14 +1,11 @@
 /** @jsx h */
 import { h } from "preact";
-import { PageProps } from "$fresh/server.ts";
+import { PageProps, Handlers } from "$fresh/server.ts";
 import { tw } from "@twind";
-
 import Layout from "../components/Layout.tsx";
 import UserColumn from "../components/UserColumn.tsx";
 import _404 from "../components/404.tsx";
 import { timeAgo } from "https://deno.land/x/time_ago/mod.ts";
-
-import { Handlers } from "$fresh/server.ts";
 
 export const handler: Handlers = {
   async GET(req, ctx) {

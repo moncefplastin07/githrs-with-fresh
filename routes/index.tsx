@@ -1,13 +1,19 @@
 /** @jsx h */
 import { h } from "preact";
-// import { Head } from "react";
+import { PageProps, Handlers } from "$fresh/server.ts";
+import { Head } from "$fresh/src/runtime/head.ts";
 import { tw } from "@twind";
 import RegionsList from "../components/RegionsList.tsx";
-import { Head } from "$fresh/src/runtime/head.ts";
-const res = await fetch(`https://dzgitrs.herokuapp.com/get_countries`);
-const regionsList  = await res.json()
-export default function Home() {
 
+export const handler: Handlers = {
+  async GET(req, ctx) {
+    
+    const res = await fetch(`https://dzgitrs.herokuapp.com/get_countries`)
+    const resp = await ctx.render(await res.json());
+    return resp;
+  },
+};
+export default function Home({data}:PageProps) {
   return (
     <div
         className="dark:bg-black dark:text-white flex flex-col items-center justify-center min-h-screen py-2"
@@ -27,7 +33,7 @@ export default function Home() {
               DZGitrs!
             </span>
           </h1>
-          <RegionsList listOfRegions={regionsList}/>
+          <RegionsList listOfRegions={data}/>
         </main>
       </div>
   );
