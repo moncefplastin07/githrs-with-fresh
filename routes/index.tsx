@@ -30,7 +30,7 @@ export default function Home({data}:PageProps) {
                 DZGitrs!
               </span>
             </h1>
-            <Alert title="Warning: " body="Some of the following links may not work for source reasons"></Alert>
+            <Alert title="Warning: " body="Some of the following links may not work for source reasons"/>
             <RegionsList listOfRegions={data}/>
           </main>
         </div>

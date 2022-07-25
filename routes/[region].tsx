@@ -5,6 +5,7 @@ import { tw } from "@twind";
 import Layout from "../components/Layout.tsx";
 import UserColumn from "../components/UserColumn.tsx";
 import _404 from "../components/404.tsx";
+import NoResult from "../components/NoResult.tsx";
 import { timeAgo } from "https://deno.land/x/time_ago/mod.ts";
 
 export const handler: Handlers = {
@@ -20,7 +21,10 @@ export default function Home({params, data}:PageProps) {
     return <_404/>;
   }
   const {users, header} = data.data
-  
+
+  if (users < 1) {
+    return <NoResult/>
+  }
 
 
 
@@ -51,7 +55,7 @@ export default function Home({params, data}:PageProps) {
             <code
               className={tw`p-3  text-lg bg-gray-100 rounded-md dark:text-black`}
             >
-              {timeAgo(new Date(header.lastUpdate.split("UTC")[0]) || new Date())}
+              {timeAgo(new Date(header.lastUpdate?.split("UTC")[0]))}
             </code>
           </p>
           <p className="mb-4">
