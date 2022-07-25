@@ -19,7 +19,7 @@ export default function RegionsList({ listOfRegions, pushAlert }:any) {
         {listOfRegions?.length
           ? (
             <ul
-              className={tw`text-left grid grid-cols-4 xs:grid-cols-2 xs:text-center gap-4`}
+              className={tw`text-center grid grid-cols-3 lg:grid-cols-4 lg:text-left gap-4`}
             >
               {
               listOfRegions.map((country:any) => {
