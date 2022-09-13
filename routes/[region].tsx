@@ -10,8 +10,7 @@ import { timeAgo } from "https://deno.land/x/time_ago/mod.ts";
 
 export const handler: Handlers = {
   async GET(req, ctx) {
-    
-    const res = await fetch(`https://dzgitrs.herokuapp.com${new URL(req.url).pathname}`)
+    const res = await fetch(`https://githrs.deno.dev/api/${new URL(req.url).pathname}`)
     const resp = await ctx.render(await res.json());
     return resp;
   },
