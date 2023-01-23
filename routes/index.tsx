@@ -1,7 +1,6 @@
 /** @jsx h */
 import { h } from "preact";
 import { PageProps, Handlers } from "$fresh/server.ts";
-import { Head } from "$fresh/src/runtime/head.ts";
 import { tw } from "@twind";
 import Layout from "../components/Layout.tsx";
 import RegionsList from "../components/RegionsList.tsx";
@@ -10,7 +9,7 @@ import Alert from "../components/Alert.tsx";
 export const handler: Handlers = {
   async GET(req, ctx) {
     
-    const res = await fetch(`https://dzgitrs.herokuapp.com/get_countries`)
+    const res = await fetch(`https://githrs.deno.dev/api/list-of-countries`)
     const resp = await ctx.render(await res.json());
     return resp;
   },
